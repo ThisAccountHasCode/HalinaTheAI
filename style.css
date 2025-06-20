@@ -24,7 +24,7 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent; /* fallback */
+  color: transparent;
   opacity: 0.75;
   user-select: none;
   z-index: 10;
@@ -50,6 +50,43 @@ body {
   padding: 1rem;
   overflow-y: auto;
 }
+
+.info-icon {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffffaa;
+  cursor: pointer;
+  z-index: 10;
+  user-select: none;
+}
+
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  max-width: 200px;
+  background-color: #2a2a2a;
+  color: #fff;
+  text-align: left;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  position: absolute;
+  top: 1.8rem;
+  right: 0;
+  transition: opacity 0.2s ease;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  pointer-events: none;
+}
+
+.info-icon:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
 
 /* Custom scrollbar */
 .chat-container::-webkit-scrollbar {
