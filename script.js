@@ -2,6 +2,39 @@ const chat = document.getElementById("chat");
 const input = document.getElementById("userInput");
 const sendBtn = document.getElementById("sendBtn");
 
+const customReplies = [
+  {
+    match: /who is halina|who is halena|halina is|is halina/i,
+    reply: "A banger AI.",
+  },
+  { match: /mew is|is mew/i, reply: "I think Mew is a wonderful guy." },
+  { match: /RatedRKO/i, reply: "Oh, you mentioned that massive forehead." },
+  { match: /is sleepy|sleepy is/i, reply: "Oh we love Sleepy!" },
+  {
+    match: /fxplays/i,
+    reply: "FX really is the goat, always win over me in Fortnut Festivals.",
+  },
+  {
+    match: /is xera|xera is/i,
+    reply: "Xerafena is a lovely streamer I barely have time to watch.",
+  },
+  {
+    match: /Milo/i,
+    reply:
+      "Milo is the bestest boy on the whole planet. Also Mew's role model.",
+  },
+  {
+    match: /what is pepsi|is pepsi good|pepsi/i,
+    reply:
+      "Pepsi is a poison and should be avoided if you are not actively trying to grow your forehead.",
+  },
+  {
+    match: /Perth/i,
+    reply:
+      "I see you mentioned the city of Perth. Did you perhaps mean a reasonable place like Melbourne instead?",
+  },
+];
+
 function addMessageBlock(username, text, isUser, isTyping = false) {
   const block = document.createElement("div");
   block.className = `message-block ${isUser ? "user-block" : "bot-block"}`;
@@ -25,6 +58,13 @@ function addMessageBlock(username, text, isUser, isTyping = false) {
 
 function getBangerResponse(inputText) {
   const trimmed = inputText.trim();
+
+  for (const rule of customReplies) {
+    if (rule.match.test(trimmed)) {
+      return rule.reply;
+    }
+  }
+
   if (trimmed.endsWith("!")) return "Banger!";
   if (trimmed.endsWith("?")) return "Banger?";
   if (trimmed.endsWith(".")) return "Banger.";
