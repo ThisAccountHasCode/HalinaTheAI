@@ -4,12 +4,17 @@ const sendBtn = document.getElementById("sendBtn");
 
 const customReplies = [
   {
-    match: /who is halina|who is halena|halina is|is halina/i,
-    reply: "A banger AI.",
+    match:
+      /who is halina|halina is|is halina|who is halena|halena is|is halena/i,
+    reply: "BANGER AI.",
   },
-  { match: /mew is|is mew/i, reply: "I think Mew is a wonderful guy." },
-  { match: /RatedRKO/i, reply: "Oh, you mentioned that massive forehead." },
-  { match: /is sleepy|sleepy is/i, reply: "Oh we love Sleepy!" },
+  {
+    match: /halina|halena/i,
+    reply: "Bogan BANGER AI.",
+  },
+  { match: /mew is|is mew/i, reply: "Antisocial Furniture Builder!" },
+  { match: /ratedrko/i, reply: "Oh, you mentioned that massive forehead" },
+  { match: /is sleepy|sleepy is/i, reply: "Oh, we love Sleepy!" },
   {
     match: /fxplays/i,
     reply: "FX really is the goat, always win over me in Fortnut Festivals.",
@@ -19,17 +24,21 @@ const customReplies = [
     reply: "Xerafena is a lovely streamer I barely have time to watch.",
   },
   {
-    match: /Milo/i,
+    match: /xera/i,
+    reply: "Xerafena is a lovely streamer!",
+  },
+  {
+    match: /milo/i,
     reply:
       "Milo is the bestest boy on the whole planet. Also Mew's role model.",
   },
   {
     match: /what is pepsi|is pepsi good|pepsi/i,
     reply:
-      "Pepsi is a poison and should be avoided if you are not actively trying to grow your forehead.",
+      "Pepsi is a poison and should be avoided, if you are not actively trying to grow your forehead.",
   },
   {
-    match: /Perth/i,
+    match: /perth/i,
     reply:
       "I see you mentioned the city of Perth. Did you perhaps mean a reasonable place like Melbourne instead?",
   },
@@ -65,10 +74,10 @@ function getBangerResponse(inputText) {
     }
   }
 
-  if (trimmed.endsWith("!")) return "Banger!";
-  if (trimmed.endsWith("?")) return "Banger?";
-  if (trimmed.endsWith(".")) return "Banger.";
-  return "Banger";
+  if (trimmed.endsWith("!")) return "BANGER!";
+  if (trimmed.endsWith("?")) return "BANGER?";
+  if (trimmed.endsWith(".")) return "BANGER.";
+  return "BANGER";
 }
 
 function sendMessage() {
