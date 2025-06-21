@@ -4,8 +4,7 @@ const sendBtn = document.getElementById("sendBtn");
 
 const customReplies = [
   {
-    match:
-      /who is halina|halina is|is halina|who is halena|halena is|is halena/i,
+    match: /halina is|is halina|halena is|is halena/i,
     reply: "BANGER AI.",
   },
   {
