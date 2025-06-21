@@ -30,6 +30,18 @@ body {
   z-index: 10;
 }
 
+.footer {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 1rem;
+  font-size: 0.75rem;
+  color: #888;
+  font-family: sans-serif;
+  opacity: 0.6;
+  z-index: 10;
+  pointer-events: none;
+}
+
 .chat-wrapper {
   display: flex;
   flex-direction: column;
@@ -86,7 +98,6 @@ body {
   visibility: visible;
   opacity: 1;
 }
-
 
 /* Custom scrollbar */
 .chat-container::-webkit-scrollbar {
