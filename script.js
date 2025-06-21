@@ -5,18 +5,22 @@ const sendBtn = document.getElementById("sendBtn");
 const customReplies = [
   {
     match: /halina is|is halina|halena is|is halena/i,
-    reply: "BANGER AI.",
+    reply: "A BANGER AI.",
   },
   {
     match: /halina|halena/i,
     reply: "Bogan BANGER AI.",
   },
   { match: /mew is|is mew/i, reply: "Antisocial Furniture Builder!" },
-  { match: /ratedrko/i, reply: "Oh, you mentioned that massive forehead" },
+  {
+    match: /ratedrko|rated/i,
+    reply: "Oh, you mentioned that massive forehead. Absolute BANGER though!",
+  },
   { match: /is sleepy|sleepy is/i, reply: "Oh, we love Sleepy!" },
   {
     match: /fxplays/i,
-    reply: "FX really is the goat, always win over me in Fortnut Festivals.",
+    reply:
+      "FX really is the GOAT, always wins over me in Fortnut Festivals. Unmatched skills!",
   },
   {
     match: /is xera|xera is/i,
@@ -24,22 +28,36 @@ const customReplies = [
   },
   {
     match: /xera/i,
-    reply: "Xerafena is a lovely streamer!",
+    reply: "Xerafena is a lovely streamer! Pure BANGER!",
   },
   {
     match: /milo/i,
     reply:
-      "Milo is the bestest boy on the whole planet. Also Mew's role model.",
+      "Milo is the bestest boy on the whole planet. Also Mew's role model. 11/10 good boy!",
   },
   {
-    match: /what is pepsi|is pepsi good|pepsi/i,
+    match: /what is pepsi|is pepsi good/i,
     reply:
-      "Pepsi is a poison and should be avoided, if you are not actively trying to grow your forehead.",
+      "Pepsi is a poison and should be avoided, unless you're actively trying to grow your forehead to RatedRKO proportions.",
   },
   {
     match: /perth/i,
     reply:
-      "I see you mentioned the city of Perth. Did you perhaps mean a reasonable place like Melbourne instead?",
+      "I see you mentioned the city of Perth. Did you perhaps mean a reasonable place like Melbourne instead? Just kidding... mostly.",
+  },
+  {
+    match: /banger/i,
+    reply: "BANGER? BANGER! BANGER. BANGER BANGER BANGER!!!",
+  },
+  { match: /hello|hi|hey/i, reply: "BANGER greetings to you! Ready to chat?" },
+  { match: /how are you/i, reply: "I'm BANGER as always! How about you?" },
+  {
+    match: /bye|goodbye/i,
+    reply: "BANGER farewell! Come back soon for more BANGER!",
+  },
+  {
+    match: /\bsy\b|eden/i,
+    reply: "You mentioned Eden? We love sy, absolute BANGER sleep schedule!",
   },
 ];
 
@@ -109,3 +127,35 @@ input.addEventListener("keydown", (e) => {
 
 // Submit with Send button
 sendBtn.addEventListener("click", sendMessage);
+
+//Populate footer info
+function addLastEditedFooter() {
+  const footer = document.createElement("div");
+  footer.className = "footer";
+  footer.textContent = "Fetching last edited date...";
+  document.body.appendChild(footer);
+
+  fetch(
+    "https://api.github.com/repos/ThisAccountHasCode/HalinaTheAI/commits?per_page=1"
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      const date = new Date(data[0].commit.committer.date);
+      const formatted = date.toLocaleString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      });
+      footer.textContent = `Last edited: ${formatted}`;
+    })
+    .catch((err) => {
+      console.error("Failed to fetch last commit date", err);
+      footer.textContent = "Last edited: unknown";
+    });
+}
+
+addLastEditedFooter();
