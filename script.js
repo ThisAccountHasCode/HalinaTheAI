@@ -132,7 +132,7 @@ sendBtn.addEventListener("click", sendMessage);
 function addLastEditedFooter() {
   const footer = document.createElement("div");
   footer.className = "footer";
-  footer.textContent = "Fetching last edited date...";
+  footer.textContent = "Fetching last edited info...";
   document.body.appendChild(footer);
 
   fetch(
@@ -140,8 +140,9 @@ function addLastEditedFooter() {
   )
     .then((res) => res.json())
     .then((data) => {
-      const date = new Date(data[0].commit.committer.date);
-      const formatted = date.toLocaleString(undefined, {
+      const commit = data[0];
+      const date = new Date(commit.commit.committer.date);
+      const formattedDate = date.toLocaleString(undefined, {
         year: "numeric",
         month: "short",
         day: "numeric",
@@ -150,10 +151,12 @@ function addLastEditedFooter() {
         second: "2-digit",
         hour12: false,
       });
-      footer.textContent = `Last edited: ${formatted}`;
+
+      const message = commit.commit.message;
+      footer.textContent = `Last edited: ${formattedDate} · ${message}`;
     })
     .catch((err) => {
-      console.error("Failed to fetch last commit date", err);
+      console.error("Failed to fetch last commit info", err);
       footer.textContent = "Last edited: unknown";
     });
 }
