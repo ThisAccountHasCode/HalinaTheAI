@@ -41,6 +41,10 @@ const customReplies = [
       "Pepsi is a poison and should be avoided, unless you're actively trying to grow your forehead to RatedRKO proportions.",
   },
   {
+    match: /what is coke|is coke good|coke/i,
+    reply: "Coke is a better and healthier option to Pepsi Max.",
+  },
+  {
     match: /perth/i,
     reply:
       "I see you mentioned the city of Perth. Did you perhaps mean a reasonable place like Melbourne instead? Just kidding... mostly.",
